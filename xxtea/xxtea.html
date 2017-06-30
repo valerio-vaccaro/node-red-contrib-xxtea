@@ -22,16 +22,16 @@
 <!-- Next, some simple help text is provided for the node.                   -->
 <script type="text/x-red" data-help-name="xxtea_encrypt">
     <p>Encrypt a message using XXTEA protocol.</p>
-    <p>The message found in <b>msg.payload</b> is encrypted using the password available on <b>msg.payload</b>,
-    after the process the encrypted test will be available on <b>msg.payload</b> and <b>msg.payload</b> will
+    <p>The message found in <b>msg.payload</b> is encrypted using the password available on <b>msg.password</b>,
+    after the process the encrypted test will be available on <b>msg.payload</b> and <b>msg.password</b> will
     be removed from the message.</p>
 </script>
 
 <!-- Finally, the node type is registered along with all of its properties   -->
 <script type="text/javascript">
     RED.nodes.registerType('xxtea_encrypt',{
-        category: 'XXTEA',      // the palette category
-        color:"#A6BBCF",
+        category: 'Cryptography',      // the palette category
+        color:"#E7E7AE",
         defaults: {             // defines the editable properties of the node
             name: {value:"xxtea_encrypt"}   //  along with default values.
         },
@@ -54,15 +54,15 @@
 <!-- Next, some simple help text is provided for the node.                   -->
 <script type="text/x-red" data-help-name="xxtea_decrypt">
 <p>Decrypt a message using XXTEA protocol.</p>
-<p>The message found in <b>msg.payload</b> is decrypted using the password available on <b>msg.payload</b>,
-after the process the decrypted test will be available on <b>msg.payload</b> and <b>msg.payload</b> will
+<p>The message found in <b>msg.payload</b> is decrypted using the password available on <b>msg.password</b>,
+after the process the decrypted test will be available on <b>msg.payload</b> and <b>msg.password</b> will
 be removed from the message.</p>
 </script>
 
 <!-- Finally, the node type is registered along with all of its properties   -->
 <script type="text/javascript">
     RED.nodes.registerType('xxtea_decrypt',{
-        category: 'XXTEA',      // the palette category
+        category: 'Cryptography',      // the palette category
         color:"#A6BBCF",
         defaults: {             // defines the editable properties of the node
             name: {value:"xxtea_decrypt"}   //  along with default values.

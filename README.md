@@ -25,16 +25,18 @@ npm install node-red-contrib-xxtea -g
 ```
 
 ## Nodes included in the package
-**xxtea_encrypt**
+**xxtea_encrypt** Encrypt a message using XXTEA protocol. The message found in *msg.payload* is encrypted using the password available on *msg.password*, after the process the encrypted test will be available on *msg.payload* and *msg.password* will be removed from the message.
 
-**xxtea_decrypt**
+**xxtea_decrypt** Decrypt a message using XXTEA protocol. The message found in *msg.payload* is decrypted using the password available on *msg.password*, after the process the decrypted test will be available on *msg.payload* and *msg.password* will
+be removed from the message.
 
 ## Usage example
 
 
 ## History
 
-- 0.0.1 - 4 Giune 2017 : Initial release
+- 0.1.0 - 30 June 2017: First usable release
+- 0.0.1 - 4 June 2017 : Initial release
 
 ## Authors
 * Valerio Vaccaro (https://github.com/valerio-vaccaro)

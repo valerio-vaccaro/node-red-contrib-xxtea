@@ -36,13 +36,13 @@ module.exports = function(RED) {
 			// To encrypt
 			const encrypted = xxtea.encrypt(msg.payload, msg.password);
 			msg.payload = encrypted;
-			msg.password = null;
-			node.send(msg);
-			this.status({
-				fill: 'grey',
+			delete msg['password'];
+			node.status({
+				fill: 'green',
 				shape: 'dot',
 				text: 'Crypted'
 			});
+			node.send(msg);
 		});
 	}
 	// Node for Sign a generic payload
@@ -59,13 +59,14 @@ module.exports = function(RED) {
 			// To decrypt
 			const decrypted = xxtea.decrypt(msg.payload, msg.password);
 			msg.payload = decrypted;
-			msg.password = null;
-			node.send(msg);
-			this.status({
-				fill: 'grey',
+			delete msg['password'];
+			node.status({
+				fill: 'greem',
 				shape: 'dot',
 				text: 'Decrypted'
 			});
+			node.send(msg);
+
 		});
 	}
 
