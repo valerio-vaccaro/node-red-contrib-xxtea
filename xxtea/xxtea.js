@@ -1,8 +1,4 @@
 /**
- * Opentimestamps.js
- *
- *
- * Requires javascript-opentimestamps
  * Copyright 2017 Valerio Vaccaro - www.valeriovaccaro.it
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +18,8 @@
 const xxtea = require('xxtea');
 
 module.exports = function(RED) {
-	// Node for Sign a generic payload
+
+	// Node for encrypt a generic payload
 	function xxtea_encrypt(n) {
 		RED.nodes.createNode(this, n);
 		this.status({
@@ -32,9 +29,16 @@ module.exports = function(RED) {
 		});
 		const msg = {};
 		const node = this;
+		node.password = n.password;
 		this.on('input', function(msg) {
 			// To encrypt
-			const encrypted = xxtea.encrypt(msg.payload, msg.password);
+			var password = "";
+			if ("password" in msg) {
+				password = msg.password;
+			} else {
+				password = node.password;
+			};
+			const encrypted = xxtea.encrypt(msg.payload, password);
 			msg.payload = encrypted;
 			delete msg['password'];
 			node.status({
@@ -44,8 +48,9 @@ module.exports = function(RED) {
 			});
 			node.send(msg);
 		});
-	}
-	// Node for Sign a generic payload
+	};
+
+	// Node for decrypt a generic payload
 	function xxtea_decrypt(n) {
 		RED.nodes.createNode(this, n);
 		this.status({
@@ -57,7 +62,13 @@ module.exports = function(RED) {
 		const node = this;
 		this.on('input', function(msg) {
 			// To decrypt
-			const decrypted = xxtea.decrypt(msg.payload, msg.password);
+			var password = "";
+			if ("password" in msg) {
+				password = msg.password;
+			} else {
+				password = node.password;
+			};
+			const decrypted = xxtea.decrypt(msg.payload, password);
 			msg.payload = decrypted;
 			delete msg['password'];
 			node.status({
@@ -68,10 +79,8 @@ module.exports = function(RED) {
 			node.send(msg);
 
 		});
-	}
+	};
 
-	// Register the node by name. This must be called before overriding any of the
-	// Node functions.
 	RED.nodes.registerType('xxtea_encrypt', xxtea_encrypt);
 	RED.nodes.registerType('xxtea_decrypt', xxtea_decrypt);
 };
