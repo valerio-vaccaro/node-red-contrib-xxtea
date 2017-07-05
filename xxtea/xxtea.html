@@ -12,11 +12,17 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-
-
 -->
 
 <script type="text/x-red" data-template-name="xxtea_encrypt">
+  <div class="form-row">
+      <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+      <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+      <label for="node-input-password"><i class="icon-tag"></i> Password</label>
+      <input type="text" id="node-input-password">
+  </div>
 </script>
 
 <!-- Next, some simple help text is provided for the node.                   -->
@@ -33,7 +39,8 @@
         category: 'Cryptography',      // the palette category
         color:"#E7E7AE",
         defaults: {             // defines the editable properties of the node
-            name: {value:"xxtea_encrypt"}   //  along with default values.
+            name: {value:"xxtea_encrypt"},   //  along with default values.
+            password: {value:""}
         },
         inputs:1,                // set the number of inputs - only 0 or 1
         outputs:1,               // set the number of outputs - 0 to n
@@ -49,6 +56,14 @@
 
 
 <script type="text/x-red" data-template-name="xxtea_decrypt">
+  <div class="form-row">
+      <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+      <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+      <label for="node-input-password"><i class="icon-tag"></i> Password</label>
+      <input type="text" id="node-input-password">
+  </div>
 </script>
 
 <!-- Next, some simple help text is provided for the node.                   -->
@@ -65,7 +80,8 @@ be removed from the message.</p>
         category: 'Cryptography',      // the palette category
         color:"#E7E7AE",
         defaults: {             // defines the editable properties of the node
-            name: {value:"xxtea_decrypt"}   //  along with default values.
+            name: {value:"xxtea_decrypt"},   //  along with default values.
+            password: {value:""}
         },
         inputs:1,                // set the number of inputs - only 0 or 1
         outputs:1,               // set the number of outputs - 0 to n
