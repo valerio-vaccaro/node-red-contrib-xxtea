@@ -29,14 +29,13 @@ module.exports = function(RED) {
 		});
 		const msg = {};
 		const node = this;
-		node.password = n.password;
 		this.on('input', function(msg) {
 			// To encrypt
 			var password = "";
 			if ("password" in msg) {
 				password = msg.password;
 			} else {
-				password = node.password;
+				password = n.password;
 			};
 			const encrypted = xxtea.encrypt(msg.payload, password);
 			msg.payload = encrypted;
@@ -66,13 +65,13 @@ module.exports = function(RED) {
 			if ("password" in msg) {
 				password = msg.password;
 			} else {
-				password = node.password;
+				password = n.password;
 			};
 			const decrypted = xxtea.decrypt(msg.payload, password);
 			msg.payload = decrypted;
 			delete msg['password'];
 			node.status({
-				fill: 'greem',
+				fill: 'green',
 				shape: 'dot',
 				text: 'Decrypted'
 			});

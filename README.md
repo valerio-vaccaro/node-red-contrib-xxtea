@@ -34,9 +34,9 @@ be removed from the message.
 
 
 ## History
-
+- 0.1.3 - 6 July 2017: Password available on node properties
 - 0.1.0 - 30 June 2017: First usable release
-- 0.0.1 - 4 June 2017 : Initial release
+- 0.0.1 - 4 June 2017: Initial release
 
 ## Authors
 * Valerio Vaccaro (https://github.com/valerio-vaccaro)
